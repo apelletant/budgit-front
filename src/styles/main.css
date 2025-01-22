@@ -1,0 +1,60 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html.dark {
+  --primary-color: #202324;
+  --background-color: #202324;
+  --border-color: #0E1B1F;
+  --primary-element: #243B41;
+  --secondary-element: #24413B;
+  --active: #3A4E52;
+  --accent: #413124;
+  --alert: #413124;
+  --shadow: #0E1B1F;
+  --text-primary: #3D4A4E;
+  --text-secondary: #243141;
+
+  color-scheme: dark;
+}
+
+html {
+  --primary-color: #F7FBFC;
+  --background-color: #F7FBFC;
+  --border-color: #98AEB6;
+  --primary-element: #BEEBF4;
+  --secondary-element: #BEF4E4;
+  --active: #E5FBFE;
+  --accent: #F4BEEB;
+  --alert: #F4D3BE;
+  --shadow: #86BCC4;
+  --text-primary: #98AEB6;
+  --text-secondary: #86BCC4;
+
+  color-scheme: light;
+}
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: rgb(13, 148, 136);
+  opacity: 0.75;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+html {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
