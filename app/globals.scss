@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    
+    // Custom SCSS variables using our color palette
+    --color-primary: theme('colors.primary.500');
+    --color-secondary: theme('colors.secondary.500');
+    --color-accent: theme('colors.accent.500');
+    --color-success: theme('colors.success.500');
+    --color-warning: theme('colors.warning.500');
+    --color-error: theme('colors.error.500');
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+// Custom SCSS mixins
+@mixin button-base {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition-property: all;
+  transition-duration: 200ms;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--ring);
+  }
+}
+
+@mixin card-base {
+  background-color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); // Replace 'shadow-soft' with a similar value
+  border: 1px solid #e5e7eb; // neutral-200
+  padding: 1.5rem;
+}
+
+@mixin text-gradient($from, $to) {
+  background: linear-gradient(135deg, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Custom component classes
+@layer components {
+  .btn-primary {
+    @include button-base;
+    background-color: var(--color-primary);
+    color: #fff;
+    &:hover {
+      background-color: theme('colors.primary.600');
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px theme('colors.primary.500');
+    }
+  }
+
+  .btn-secondary {
+    @include button-base;
+    background-color: var(--color-secondary);
+    color: #fff;
+    &:hover {
+      background-color: theme('colors.secondary.600');
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px theme('colors.secondary.500');
+    }
+  }
+
+  .btn-accent {
+    @include button-base;
+    background-color: var(--color-accent);
+    color: #fff;
+    &:hover {
+      background-color: theme('colors.accent.600');
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px theme('colors.accent.500');
+    }
+  }
+
+  .btn-outline {
+    @include button-base;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background-color: transparent;
+    &:hover {
+      background-color: var(--color-primary);
+      color: #fff;
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px theme('colors.primary.500');
+    }
+  }
+
+  .card {
+    @include card-base;
+  }
+
+  .card-hover {
+    @include card-base;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12);
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 8px 24px 0 rgba(0,0,0,0.16);
+      transform: translateY(-4px);
+    }
+  }
+
+  .text-gradient-primary {
+    @include text-gradient(theme('colors.primary.500'), theme('colors.secondary.500'));
+  }
+
+  .text-gradient-accent {
+    @include text-gradient(theme('colors.accent.500'), theme('colors.primary.500'));
+  }
+
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+    border-radius: 9999px;
+    border: 2px solid theme('colors.neutral.300');
+    border-top-color: theme('colors.primary.500');
+  }
+}
+
+// Custom utilities
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: theme('colors.primary.400');
+    --color-secondary: theme('colors.secondary.400');
+    --color-accent: theme('colors.accent.400');
+  }
+
+  .card {
+    background-color: #1a1a1a; // neutral-800
+    border-color: #374151;     // neutral-700
+    color: #fff;
+  }
+
+  .card-hover {
+    background-color: #1a1a1a; // neutral-800
+    border-color: #374151;     // neutral-700
+    color: #fff;
+    &:hover {
+      background-color: #23272f; // neutral-750 (custom, adjust as needed)
+    }
+  }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f3f4f6; // neutral-100
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; // neutral-400
+  border-radius: 9999px;
+  
+  &:hover {
+    background-color: #6b7280; // neutral-500
+  }
+}
