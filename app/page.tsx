@@ -1,6 +1,8 @@
 import { DataFetcher } from "@/components/data-fetcher"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { I18nProvider } from "@/components/i18n-provider"
+import { AddExpense } from "@/components/form/add-expense"
+import { MainCalendar } from "@/components/main-calendar"
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
           </header>
           <main className="space-y-12">
             <DataFetcher />
+            <MainCalendar />
+            <AddExpense />
           </main>
         </div>
       </div>
